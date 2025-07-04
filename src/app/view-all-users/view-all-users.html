@@ -1,0 +1,30 @@
+<ng-template #noUsers >
+    <p class="error">No users found!</p></ng-template>
+<div *ngIf="users.length > 0; else noUsers">
+    <h3 class="title-center">List Of Registered Users</h3>
+    <p *ngIf="isDeleted" class="delete-msg">User Deleted Successfully......</p>
+    <div class="user-cards-wrapper">
+        <div *ngFor="let user of users | paginate: { itemsPerPage: 8, currentPage: page }">
+            <div class="user-card">
+                <div class="user-card-head">
+                    <h3>{{user.fullName}}</h3>
+                    <div>
+                        <i class="fa-regular fa-pen-to-square" (click)="editUser(user.id)"></i>
+                        <i class="fa-solid fa-trash" (click)="deleteUser(user.id)"></i>
+                    </div>
+                    
+                </div>
+                <div class="user-card-data">
+                    <p><strong>DOB:</strong> {{ user.dob }}</p>
+                    <p><strong>Address:</strong> {{ user.address.street }}, {{ user.address.city }}, {{ user.address.state }} - {{ user.address.zipCode }}</p>
+                    <p><strong>Language:</strong> {{ user.preferences.language }}</p>
+                    <p><strong>Contact Method:</strong> {{ user.preferences.contactMethod }}</p>
+                    <p *ngIf="user.preferences.email"><strong>Email:</strong> {{ user.preferences.email}}</p>
+                    <p *ngIf="user.preferences.phno"><strong>Phone:</strong> {{ user.preferences.phno }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pagination-controls *ngIf="users.length > 8" (pageChange)="page = $event"></pagination-controls>
+

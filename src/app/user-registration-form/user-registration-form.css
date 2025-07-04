@@ -1,0 +1,91 @@
+.container {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px auto;
+}
+form {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    padding: 0px auto;
+}
+form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="email"],
+form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form input[type="radio"],
+form input[type="checkbox"] {
+    margin-right: 5px;
+}
+form .error {
+    color: red;
+    font-size: 12px;
+}
+form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+form input[type="submit"]:hover {
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
+}
+form p,
+form div {
+    margin-bottom: 15px;
+}
+.checkbox-group,
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.radio-group label {
+    margin-right: 15px;
+}
+.contactMethod-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top:5px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+.submit-success{
+    color: green;
+    text-align: center;
+}

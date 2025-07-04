@@ -1,0 +1,77 @@
+.error{
+    color:red;
+}
+.delete-msg{
+    color: green;
+    text-align: center;
+}
+.user-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px; 
+  justify-content:flex-start; 
+  padding: 10px 5%;
+}
+.user-card {
+    flex: 1 1 calc(50% - 32px);
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 16px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.user-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #95c9f3; 
+  padding: 12px 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+.title-center{
+    text-align: center;
+}
+.user-card-head h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.user-card-head i {
+  margin-left: 12px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.user-card-head i:hover {
+  color: #000;
+}
+
+.user-card-data {
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #444;
+  text-align: left;
+}
+
+.user-card button {
+  display: block;
+  margin: 12px auto 16px;
+  padding: 8px 20px;
+  background-color: #b3d8ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-card button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,18 @@
+export interface PersonModel {
+    id:string,
+    fullName:string,
+    dob:string,
+    address:{
+        street:string,
+        city:string,
+        state:string,
+        zipCode:string
+    },
+    preferences:{
+        subscription:boolean,
+        language:string,
+        contactMethod:string,
+        email:string,
+        phno:string
+    }
+}

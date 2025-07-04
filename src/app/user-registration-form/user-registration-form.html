@@ -1,0 +1,92 @@
+<div class="container">
+    <h3>Registration Form</h3>
+<form  [formGroup]="userInfo" (submit)="registerUser()">
+    <p>
+        <label for="fullName">FirstName:
+            
+        </label>
+        <input type="text" placeholder="fullName" formControlName="fullName" [style.border-color]="isSubmitted && userInfo.get('fullName')?.hasError('required') ||  userInfo.get('fullName')?.hasError('pattern') ? 'red':''">
+        <span *ngIf="isSubmitted && userInfo.get('fullName')?.hasError('required')" class="error">Name Required</span>
+        <span *ngIf="isSubmitted && userInfo.get('fullName')?.hasError('pattern')" class="error">Name should have characters only</span>
+    </p>
+    <p>
+        <label for="dob">DOB:
+            
+        </label>
+        <input type="date" formControlName="dob" placeholder="DOB" [style.border-color]="(isSubmitted && userInfo.get('dob')?.hasError('required'))?'red':''">
+        <span *ngIf="isSubmitted && userInfo.get('dob')?.hasError('required')" class="error">DOB Required</span>
+    </p>
+    <div formGroupName="address">
+        <p>
+            <label for="street">Street:
+                
+            </label>
+            <input type="text" placeholder="street" formControlName="street" [style.border-color]="isSubmitted && userInfo.get('address.street')?.hasError('required') || userInfo.get('address.city')?.hasError('pattern') ? 'red':'black'">
+            <span *ngIf="isSubmitted && userInfo.get('address.street')?.hasError('required')" class="error">street Required</span>
+            <span *ngIf="isSubmitted && userInfo.get('address.street')?.hasError('pattern')" class="error">street should have characters only</span>
+        </p>
+        <p>
+            <label for="city">City:
+                
+            </label>
+            <input type="text" placeholder="city" formControlName="city" [style.border-color]="isSubmitted && userInfo.get('address.city')?.hasError('required') || isSubmitted && userInfo.get('address.city')?.hasError('pattern') ? 'red':''">
+            <span *ngIf="isSubmitted && userInfo.get('address.city')?.hasError('required')" class="error">city Required</span>
+            <span *ngIf="isSubmitted && userInfo.get('address.city')?.hasError('pattern')" class="error">city should have characters only</span>
+        </p>
+        <p>
+            <label for="state">State:
+                
+            </label>
+            <input type="text" placeholder="state" formControlName="state" [style.border-color]="isSubmitted && userInfo.get('address.state')?.hasError('required')|| isSubmitted && userInfo.get('address.state')?.hasError('pattern')?'red':''">
+            <span *ngIf="isSubmitted && userInfo.get('address.state')?.hasError('required')" class="error">State Required</span>
+            <span *ngIf="isSubmitted && userInfo.get('address.state')?.hasError('pattern')" class="error">state should have characters only</span>
+        </p>
+        <p>
+            <label for="zipCode">Zip Code:
+                
+            </label>
+            <input type="text" name="" id="" placeholder="zipCode" formControlName="zipCode" [style.border-color] = "isSubmitted && userInfo.get('address.zipCode')?.hasError('required')||userInfo.get('address.zipCode')?.hasError('pattern') ? 'red':''">
+            <span *ngIf="isSubmitted && userInfo.get('address.zipCode')?.hasError('required')" class="error">Zip Code Required</span>
+            <span *ngIf="isSubmitted && userInfo.get('address.zipCode')?.hasError('pattern')" class="error">Enter valid zip code</span>
+        </p>
+    </div>
+    <div formGroupName="preferences">
+        <p class="checkbox-group">
+            <input type="checkbox" formControlName="subscription">
+            <label for="subscription">I Agree T/C</label>
+        </p>
+        <p>
+            <label for="language">Select Known Languages:</label>
+            <select name="language" formControlName="language">
+                <option value="telugu">Telugu</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+            </select>
+        </p>
+        <div>
+            <div class="contactMethod-options">
+            <p >Contact Method:</p>
+                <input type="radio" value="email" id="contactMethod" formControlName="contactMethod">
+                <label for="email">Email</label>
+                <input type="radio" value="phno" id="contactMethod" formControlName="contactMethod">
+                <label for="phno">contact Number</label>
+            </div> 
+            <div *ngIf="userInfo.get('preferences.contactMethod')?.value==='email'">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="xyz@gmail.com" formControlName="email">
+            </div>
+            <div *ngIf="userInfo.get('preferences.contactMethod')?.value==='phno'">
+                <label for="phno">phone Number:</label>
+                <input type="text" placeholder="phoneNumber" formControlName="phno">
+            </div>
+        </div>
+    </div>
+    <p class="submit-success" *ngIf="isSuccess">Submitted Successfully</p>
+    <input *ngIf="!isEditable" type="submit" value="submit">
+    <input *ngIf="isEditable" type="submit" value="edit">
+</form>
+<!-- <div *ngFor="let p of personDetails">
+    <p>{{p.fullName}}</p>
+</div> -->
+
+</div>
