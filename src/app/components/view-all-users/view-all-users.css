@@ -1,0 +1,166 @@
+/* Error and messages */
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+  body {
+    padding-top: 70px; /* adjust if your bar height is different */
+  }
+.search-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding:4px 6px;
+  width: fit-content;
+  margin: 15px;
+}
+.search-div input{
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.style-icon{
+  border-radius: 50%;
+  padding: 10px;
+  color:orange;
+  width: 20px;
+  height: 20px;
+  /* background-color: rgba(255, 166, 0, 0.979); */
+}
+.dropdown{
+  padding: 10px;
+  border: 1px solid rgb(198, 193, 193);
+  border-radius: 6px;
+  margin-left: 2px;
+  color: grey;
+}
+.dropdown option{
+  background-color: rgb(255, 255, 255);
+  color: rgb(247 217 108 / 98%);
+}
+
+
+.sort-btn{
+  background-color: rgb(247 217 108 / 98%);
+}
+.error {
+  color: red;
+}
+
+.delete-msg {
+  color: green;
+  text-align: center;
+}
+
+.title-center {
+  text-align: center;
+}
+
+/* Wrapper for all cards */
+.user-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Individual user card */
+.user-card {
+  flex: 1 1 calc(20% - 20px); /* 5 cards per row */
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 250px;
+}
+
+/* Card header (name + icons) */
+.user-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(247 217 108 / 98%);
+  padding: 12px 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-card-head h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+
+.user-card-head i:hover {
+  color: #000;
+}
+
+/* Card content */
+.user-card-data {
+  display: flex;
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #444;
+  text-align: left;
+}
+.user-image{
+  width: 10rem;
+  height: 10rem;
+  
+}
+.user-image img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Responsive layout */
+@media (max-width: 1200px) {
+  .user-card {
+    flex: 1 1 calc(25% - 20px); /* 4 cards */
+  }
+}
+
+@media (max-width: 992px) {
+  .user-card {
+    flex: 1 1 calc(33.33% - 20px); /* 3 cards */
+  }
+}
+
+@media (max-width: 768px) {
+  .user-card {
+    flex: 1 1 calc(50% - 20px); /* 2 cards */
+  }
+}
+
+@media (max-width: 480px) {
+  .user-card {
+    flex: 1 1 100%; /* 1 card */
+  }
+}
+.pagination{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.ion-icon{
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s ease;
+}

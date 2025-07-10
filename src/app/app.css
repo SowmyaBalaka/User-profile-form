@@ -5,49 +5,118 @@
   height: 100vh;
 }
 
-/* Navigation bar */
-nav {
-  height: 10vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
+.nav-bar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
+  height: 10vh;
+  background-color: rgb(246 119 54 / 98%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
 }
 
-/* Navigation list styled as horizontal menu */
+.nav-bar nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.nav-bar h2 {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+h2 a {
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+}
+
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 30px;
-  padding: 0;
+  gap: 15px;
   margin: 0;
+  padding: 0;
 }
 
-/* Navigation links */
+.nav-list {
+  color: #141313;
+  background-color: white;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.nav-list li :hover {
+  color: rgb(27, 25, 25);
+}
+
 .nav-list li a {
   text-decoration: none;
-  color: #fff;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  color: orange;
+  font-weight: bold;
 }
 
-/* Hover effect */
-.nav-list li a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.hamburger {
+  width: 25px;
+  height: 25px;
 }
 
-/* Main content area */
+.hamburger-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  position: absolute;
+  top: 50px;
+  /* adjust as needed */
+  left: 0;
+  width: 10%;
+  background-color: rgba(255, 166, 0, 0.979);
+  flex-direction: column;
+  border-radius: 0 0 5px 5px;
+  z-index: 1000;
+}
+
+.hamburger-menu li a {
+  padding: 10px;
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+
+.hamburger-menu li a:hover {
+  background-color: rgba(255, 166, 0, 0.979);
+}
+
+/* Show hamburger menu when toggled */
+.hamburger-menu.open {
+  display: flex;
+}
+
 .container-body {
-    margin-top: 9vh;
-    flex: 1;
-    padding: 20px;
-    background-color: #f9f9f9;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  margin-top: 9vh;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media(max-width:768px) {
+  nav h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width:480px) {
+  nav h2 {
+    font-size: 15px;
+  }
 }

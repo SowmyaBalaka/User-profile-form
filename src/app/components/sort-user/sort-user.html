@@ -1,0 +1,9 @@
+<div class="sort-div">
+    <!-- <input class="btn sort-btn" type="button" value="sort🔃" (click)="sortByAge()"> -->
+    <label for="" class="form-label">Sort By Age : </label>
+    <select class="dropdown" (change)="onSort($event)">
+        <option value="">Sort By Age</option>
+        <option value="asc">Low-High</option>
+        <option value="desc">High-Low</option>
+    </select>
+</div>

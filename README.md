@@ -1,6 +1,37 @@
-# UserProfileForm
+# UserProfileForm Using Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+## Project Overview
+
+**UserProfileForm** is a responsive web application built with Angular , designed to efficiently manage user profiles. It provides a user-friendly interface for creating,viewing, and organizing user data , complete with powerful search, filter , and sort functionalities.
+
+This system aims to demostrate robust form handling , data manupulation, and reusability within Angular application.
+
+---
+
+# Features
+
+* **Reactive Forms:** Robust and scalable form handling for creating and editing user profiles.
+* **User Creation (CRUD):** Add new user profiles with fields such as Name, Age, Profession, etc.
+* **User Listing:** Display all registered user profiles in a clear, tabular format.
+* **Search by Name:** Instantly find users by typing their name (partial or full).
+* **Filter by Profession:** Narrow down the user list by selecting a specific profession.
+* **Sort by Age:** Ascending and descending sort options for user profiles based on their age.
+* **Component-Based Architecture:** Modular design with separate components for different functionalities (e.g., search, sort, filter).
+* **Interface-Driven Development:** Strong typing with TypeScript interfaces for data models.
+
+---
+
+## Technologies Used
+
+This project is built using following technologies:
+
+* **Frontend Framework:** Angular (v16+)
+* **Form Management:** Angular Reactive Forms
+* **Styling:** CSS .
+* **Language:** TypeScript
+
+
+---
 
 ## Development server
 

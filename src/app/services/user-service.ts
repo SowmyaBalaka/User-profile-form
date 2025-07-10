@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
-import { PersonModel } from './person-model';
+import { IPersonModel } from '../interfaces/person-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  users:PersonModel[]=[]
+  users:IPersonModel[]=[]
   constructor() { }
-  getUsers():PersonModel[]{
+
+  // TODO : Set the user here only to have a centralized service usage 
+
+  saveUser(personDetails:IPersonModel[]){
+      localStorage.setItem('persons', JSON.stringify(personDetails));
+  }
+   
+  getUsers():IPersonModel[]{
     const personString:any = localStorage.getItem('persons');
     return personString?JSON.parse(personString):[];
   }

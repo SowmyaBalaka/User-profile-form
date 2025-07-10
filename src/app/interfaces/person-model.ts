@@ -1,7 +1,9 @@
-export interface PersonModel {
+export interface IPersonModel {
     id:string,
     fullName:string,
     dob:string,
+    age:string,
+    profession:string,
     address:{
         street:string,
         city:string,
@@ -14,5 +16,6 @@ export interface PersonModel {
         contactMethod:string,
         email:string,
         phno:string
-    }
+    },
+    image:string
 }

@@ -1,0 +1,137 @@
+<div class="container mt-2">
+    <h3 class="text-center mb-4">Registration Form</h3>
+    <form class="border rounded shadow p-5" [formGroup]="userInfo" (submit)="registerUser()">
+        <div class="row g-3">
+            <div class="col">
+                <label for="fullName" class="form-label">Full Name:</label>
+
+                <input type="text" class="form-control" formControlName="fullName"
+                    [ngClass]="{'is-invalid': isSubmitted && userInfo.get('fullName')?.hasError('required') ||  userInfo.get('fullName')?.hasError('pattern')}">
+                <div class="invalid-feedback ">
+                    <span class="text-danger" *ngIf="isSubmitted && userInfo.get('fullName')?.hasError('required')">Name
+                        Required</span>
+                    <span class="text-danger" *ngIf="isSubmitted && userInfo.get('fullName')?.hasError('pattern')">Name
+                        should have characters only</span>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="dob" class="form-label">DOB:</label>
+                <input type="date" class="form-control" formControlName="dob"
+                    [ngClass]="{'is-invalid':(isSubmitted && userInfo.get('dob')?.hasError('required'))}">
+                <span *ngIf="isSubmitted && userInfo.get('dob')?.hasError('required')"
+                    class="invalid-feedback text-danger">DOB Required</span>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label" for="age">Age:</label>
+                <input class="form-control" type="text" formControlName="age"
+                    [ngClass]="{'is-invalid' : isSubmitted && userInfo.get('age')?.hasError('required')}">
+                <span *ngIf="isSubmitted && userInfo.get('age')?.hasError('required')"
+                    class="invalid-feedback text-danger">Age required</span>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col">
+                <label class="form-label" for="profession">Profession:</label>
+                <input class="form-control" type="text" formControlName="profession">
+            </div>
+        </div>
+
+        <div class="row g-3" formGroupName="address">
+            <div class="col-sm-3">
+                <label class="form-label" for="street">Street:</label>
+                <input class="form-control" type="text" formControlName="street"
+                    [ngClass]="{'is-invalid': isSubmitted && userInfo.get('address.street')?.hasError('required') || userInfo.get('address.city')?.hasError('pattern')}">
+                <span *ngIf="isSubmitted && userInfo.get('address.street')?.hasError('required')"
+                    class="invalid-feedback text-danger">street Required</span>
+                <span *ngIf="isSubmitted && userInfo.get('address.street')?.hasError('pattern')"
+                    class="invalid-feedback text-danger">street should have characters only</span>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label" for="city">City:</label>
+                <input type="text" class="form-control" formControlName="city"
+                    [ngClass]="{'is-invalid' : isSubmitted && userInfo.get('address.city')?.hasError('required') || isSubmitted && userInfo.get('address.city')?.hasError('pattern') }">
+                <span *ngIf="isSubmitted && userInfo.get('address.city')?.hasError('required')"
+                    class="invalid-feedback text-danger">city Required</span>
+                <span *ngIf="isSubmitted && userInfo.get('address.city')?.hasError('pattern')"
+                    class="invalid-feedback text-danger">city should have characters only</span>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label" for="state">State: </label>
+                <input class="form-control" type="text" formControlName="state"
+                    [ngClass]="{'is-invalid': isSubmitted && userInfo.get('address.state')?.hasError('required')|| isSubmitted && userInfo.get('address.state')?.hasError('pattern')}">
+                <span *ngIf="isSubmitted && userInfo.get('address.state')?.hasError('required')"
+                    class="invalid-feedback text-danger">State Required</span>
+                <span *ngIf="isSubmitted && userInfo.get('address.state')?.hasError('pattern')"
+                    class="invalid-feedback text-danger">state should have characters only</span>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label" for="zipCode">Zip Code:</label>
+                <input class="form-control" type="text" name="" id="" formControlName="zipCode"
+                    [ngClass]="{'is-invalid': isSubmitted && userInfo.get('address.zipCode')?.hasError('required')||userInfo.get('address.zipCode')?.hasError('pattern')}">
+                <span *ngIf="isSubmitted && userInfo.get('address.zipCode')?.hasError('required')"
+                    class="invalid-feedback text-danger">Zip Code Required</span>
+                <span *ngIf="isSubmitted && userInfo.get('address.zipCode')?.hasError('pattern')"
+                    class="invalid-feedback text-danger">Enter valid zip code</span>
+            </div>
+        </div>
+        <div formGroupName="preferences" class="mt-4">
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" formControlName="subscription">
+                <label class="form-check-label" for="subscription">I Agree T/C</label>
+            </div>
+            <div>
+                <label class="form-label" for="language">Select Known Languages:</label>
+                <select class="form-select" name="language" formControlName="language">
+                    <option value="telugu">Telugu</option>
+                    <option value="english">English</option>
+                    <option value="hindi">Hindi</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <div class="mb-2 mt-2">
+                    <span>Contact Method:</span>
+                    <input type="radio" class="form-check-input ms-3" value="email" id="contactMethod"
+                        formControlName="contactMethod" checked>
+                    <label for="email" class="form-check-label ms-1">Email</label>
+                    <input type="radio" class="form-check-input ms-3" value="phno" id="contactMethod"
+                        formControlName="contactMethod">
+                    <label for="phno" class="form-check-label ms-1">Contact Number</label>
+                </div>
+                <div *ngIf="userInfo.get('preferences.contactMethod')?.value==='email'">
+                    <label class="form-label" for="email">Email:</label>
+                    <input class="form-control" type="email" placeholder="xyz@gmail.com" formControlName="email"
+                        [ngClass]="{'is-invalid': isSubmitted && userInfo.get('preferences.email')?.hasError('pattern') }">
+                    <span *ngIf="isSubmitted && userInfo.get('preferences.email')?.hasError('pattern')"
+                        class="invalid-feedback text-danger">Enter Valid Email</span>
+                </div>
+                <div *ngIf="userInfo.get('preferences.contactMethod')?.value==='phno'">
+                    <label class="form-label" for="phno">Phone Number:</label>
+                    <input class="form-control" type="text" formControlName="phno">
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="file" class="form-label">Upload Image:</label>
+            <input type="file" class="form-control" (change)="onImageChange($event)" name="" id="">
+            <span *ngIf="selectedFile">{{selectedFile}}</span>
+            <span *ngIf="isEditable">✅file Choosen</span>
+        </div>
+        <p class="text-success mt-3" *ngIf="isSuccess">Submitted Successfully</p>
+        <div class="text-center mt-4">
+            <input class="btn btn-orange w-25 me-2" *ngIf="!isEditable" type="submit" value="submit">
+            <input class="btn btn-orange w-25 me-2" *ngIf="isEditable" type="submit" value="Update">
+        </div>
+
+    </form>
+    <!-- <div *ngFor="let p of personDetails">
+    <p>{{p.fullName}}</p>
+</div> -->
+
+</div>

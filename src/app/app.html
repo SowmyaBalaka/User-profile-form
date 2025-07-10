@@ -2,14 +2,18 @@
   <div class="main-container">
     <div class="nav-bar">
       <nav>
+        <ion-icon name="menu-outline" class="hamburger" (click)="toggleMenu()" aria-label="toggleMenu"></ion-icon>
+        <h2><a routerLink="/viewUsers">User Registration Details</a></h2>
         <ul class="nav-list">
-          <li><a href="/registerUser">Register User</a></li>
-          <li><a href="/viewUsers">View Users</a></li>
+          <li><a routerLink="/registerUser">Register User</a></li>
+        </ul>
+        <ul class="hamburger-menu" [class.open]="menuOpen">
+          <li><a routerLink="/viewUsers">View Users </a></li>
         </ul>
       </nav>
     </div>
     <div class="container-body">
-      <router-outlet/>
+      <router-outlet />
     </div>
   </div>
 </main>
