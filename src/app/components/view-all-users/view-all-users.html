@@ -1,74 +1,58 @@
 <div class="container w-100 d-flex flex-column">
     <div class="d-flex align-items-center justify-content-center w-100">
-        <!-- <div class="sort-div">
-            <label for="">Filter User : </label>
-            <select class="dropdown" name="" id="" (change)="filterUser($event)">
-                <option value="">select Profession</option>
-                <option value="doctor">Doctor</option>
-                <option value="engineer">Engineer</option>
-                <option value="teacher">Teacher</option>
-                <option value="pharmacist">Pharmacist</option>
-            </select>
-        </div> -->
 
-        <!-- <div class="search-div w-20">
-            <input type="text" placeholder="Search" [(ngModel)]="userName"  (keyup)="searchUser(userName)">
-            <ion-icon class="style-icon" name="search-outline" ></ion-icon>
-        </div>
-         -->
         <app-filter-user (filter)="filterUser($event)"></app-filter-user>
         <app-search (search)="searchUser($event)"></app-search>
         <app-sort-user (sort)="sortByAge($event)"></app-sort-user>
-        <!-- <div class="sort-div">
-            <input class="btn sort-btn" type="button" value="sort🔃" (click)="sortByAge()"> -->
-             <!-- <label for="" class="form-label">Sort By Age : </label>
-             <select class="dropdown" (change)="sortByAge($event)">
-                <option value="">Sort By Age</option>
-                <option value="asc">Low-High</option>
-                <option value="desc">High-Low</option>
-             </select>
-        </div> -->
+        
     </div>
-    
-<div class="w-100 d-flex align-items-center justify-content-center flex-column" >
-    <ng-template #noUsers>
-        <p class="error">No users found!</p></ng-template>
-    <div *ngIf="users.length > 0; else noUsers">
-        <!-- <h3 class="title-center">List Of Registered Users</h3> -->
-        <p *ngIf="isDeleted" class="delete-msg">User Deleted Successfully......</p>
-        <div class="user-cards-wrapper">
-            <div *ngFor="let user of users | paginate: { itemsPerPage: 2, currentPage: page }">
-                <div class="user-card">
-                    <div class="user-card-head">
-                        <h3>{{user.fullName}}</h3>
-                        <div>
-                            <ion-icon name="create-outline" (click)="editUser(user.id)" class="ion-icon"></ion-icon>
-                            <!-- <i class="fa-regular fa-pen-to-square" (click)="editUser(user.id)"></i> -->
-                            <ion-icon name="trash-outline" (click)="deleteUser(user.id)" class="ion-icon"></ion-icon> 
+
+    <div class="w-100 d-flex align-items-center justify-content-center flex-column">
+        <ng-template #noUsers>
+            <p class="error">No users found!</p>
+        </ng-template>
+        <div *ngIf="users.length > 0; else noUsers">
+            <div class="user-cards-wrapper">
+                <div *ngFor="let user of users | paginate: { itemsPerPage: 2, currentPage: page }">
+                    <div class="user-card">
+                        <div class="user-card-head">
+                            <h3>{{user.fullName}}</h3>
+                            <div>
+                                <ion-icon name="create-outline" (click)="editUser(user.id)" class="ion-icon"></ion-icon>
+                                <ion-icon name="trash-outline" (click)="openPopUp()" class="ion-icon"></ion-icon>
+                            </div>
+                            <div class="popup-overlay" *ngIf="showPopup">
+                                <div class="popup">
+                                    <h3>Are you sure you want to delete?</h3>
+                                    <button (click)="confirmDelete(user.id)">Yes</button>
+                                    <button (click)="closePopup()">No</button>
+                                </div>
+                                </div>
+
+
                         </div>
-                        
-                    </div>
-                    <div class="user-card-data">
-                        <div>
-                            <p><strong>DOB:</strong> {{ user.dob }}</p>
-                            <p><strong>Age:</strong>{{ user.age}}</p>
-                            <p><strong>Profession:</strong>{{ user.profession}}</p>
-                            <p><strong>Address:</strong> {{ user.address.street }}, {{ user.address.city }}, {{ user.address.state }} - {{ user.address.zipCode }}</p>
-                            <p><strong>Language:</strong> {{ user.preferences.language }}</p>
-                            <p><strong>Contact Method:</strong> {{ user.preferences.contactMethod }}</p>
-                            <p *ngIf="user.preferences.email"><strong>Email:</strong> {{ user.preferences.email}}</p>
-                            <p *ngIf="user.preferences.phno"><strong>Phone:</strong> {{ user.preferences.phno }}</p>
+                        <div class="user-card-data">
+                            <div>
+                                <p><strong>DOB:</strong> {{ user.dob }}</p>
+                                <p><strong>Age:</strong>{{ user.age}}</p>
+                                <p><strong>Profession:</strong>{{ user.profession}}</p>
+                                <p><strong>Address:</strong> {{ user.address.street }}, {{ user.address.city }}, {{
+                                    user.address.state }} - {{ user.address.zipCode }}</p>
+                                <p><strong>Language:</strong> {{ user.preferences.language }}</p>
+                                <p><strong>Contact Method:</strong> {{ user.preferences.contactMethod }}</p>
+                                <p *ngIf="user.preferences.email"><strong>Email:</strong> {{ user.preferences.email}}
+                                </p>
+                                <p *ngIf="user.preferences.phno"><strong>Phone:</strong> {{ user.preferences.phno }}</p>
+                            </div>
+                            <div class="user-image">
+                                <img [src]="user.image || 'Profile-Transparent.png'" alt="">
+                            </div>
+
                         </div>
-                        <div class="user-image">
-                            <img [src]="user.image || 'Profile-Transparent.png'" alt="">
-                        </div>
-                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <pagination-controls *ngIf="users.length > 2" (pageChange)="page = $event" class="pagination"></pagination-controls>
 </div>
-

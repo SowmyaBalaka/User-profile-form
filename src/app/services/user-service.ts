@@ -8,10 +8,8 @@ export class UserService {
   users:IPersonModel[]=[]
   constructor() { }
 
-  // TODO : Set the user here only to have a centralized service usage 
-
   saveUser(personDetails:IPersonModel[]){
-      localStorage.setItem('persons', JSON.stringify(personDetails));
+    localStorage.setItem('persons', JSON.stringify(personDetails));
   }
    
   getUsers():IPersonModel[]{

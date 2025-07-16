@@ -27,32 +27,45 @@ export class ViewAllUsers {
   isSearchUser: boolean = false;
   userName: string = '';
   profession: string = '';
+  showPopup:boolean=false;
   constructor(private userservice: UserService, private router: Router, private toastr: ToastrService) {
-    // this.users = this.userservice.getUsers();
-    // console.log(this.users);
+  
   }
   ngOnInit() {
-    this.users = this.userservice.getUsers()
-    // console.log(this.users)
+    this.users = this.userservice.getUsers();
   }
+
+  openPopUp(){
+    this.showPopup=true;
+  }
+
+  closePopup(){
+    this.showPopup=false;
+  }
+
   editUser(id: string) {
     this.router.navigate(['/registerUser', id])
-    //console.log(id)
+    
   }
-  deleteUser(id: string) {
+  confirmDelete(id: string) {
     this.userservice.deleteUser(id);
     this.users = this.userservice.getUsers();
     this.toastr.success('User Deleted', 'Successfully');
+    this.showPopup=false;
   }
-  searchUser(userName: string) {
-    this.users=this.userservice.getUsers().filter((user)=>
-        user.fullName.toLowerCase().includes(userName)
+  searchUser(userData: string) {
+    if(userData){
+      this.users=this.userservice.getUsers().filter((user)=>
+      user.fullName.toLowerCase().includes(userData) ||
+      user.profession.toLowerCase().includes(userData)
     )
+    }
+    
     this.page=1;
   }
   filterUser(profession:string) {
     this.users=this.userservice.getUsers().filter((user)=>
-      user.profession.includes(profession)
+      user.profession.toLowerCase().includes(profession)
     )
     this.page=1;
   }

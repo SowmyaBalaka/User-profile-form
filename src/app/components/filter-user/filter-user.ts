@@ -9,8 +9,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class FilterUser {
   @Output() filter = new EventEmitter<string>();
 
-  onFilter(event:Event){
-    const profession = (event.target as HTMLSelectElement).value
-    this.filter.emit(profession);
+  onFilter(value:string){
+    const profession = value
+    this.filter.emit(profession.toLowerCase());
   }
 }

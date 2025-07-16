@@ -39,7 +39,15 @@
         <div class="row g-3">
             <div class="col">
                 <label class="form-label" for="profession">Profession:</label>
-                <input class="form-control" type="text" formControlName="profession">
+                <select class="form-select" name="profession" formControlName="profession"
+                    [ngClass]="{'is-invalid' : isSubmitted && userInfo.get('age')?.hasError('required')}">
+                    <option selected value="engineer">Engineer</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="pharmacist">Pharmacist</option>
+                </select>
+                <span *ngIf="isSubmitted && userInfo.get('profession')?.hasError('required')"
+                    class="invalid-feedback text-danger">Proffession required</span>
             </div>
         </div>
 
@@ -49,18 +57,18 @@
                 <input class="form-control" type="text" formControlName="street"
                     [ngClass]="{'is-invalid': isSubmitted && userInfo.get('address.street')?.hasError('required') || userInfo.get('address.city')?.hasError('pattern')}">
                 <span *ngIf="isSubmitted && userInfo.get('address.street')?.hasError('required')"
-                    class="invalid-feedback text-danger">street Required</span>
+                    class="invalid-feedback text-danger">Street Required</span>
                 <span *ngIf="isSubmitted && userInfo.get('address.street')?.hasError('pattern')"
-                    class="invalid-feedback text-danger">street should have characters only</span>
+                    class="invalid-feedback text-danger">Street should have characters only</span>
             </div>
             <div class="col-sm-3">
                 <label class="form-label" for="city">City:</label>
                 <input type="text" class="form-control" formControlName="city"
                     [ngClass]="{'is-invalid' : isSubmitted && userInfo.get('address.city')?.hasError('required') || isSubmitted && userInfo.get('address.city')?.hasError('pattern') }">
                 <span *ngIf="isSubmitted && userInfo.get('address.city')?.hasError('required')"
-                    class="invalid-feedback text-danger">city Required</span>
+                    class="invalid-feedback text-danger">City Required</span>
                 <span *ngIf="isSubmitted && userInfo.get('address.city')?.hasError('pattern')"
-                    class="invalid-feedback text-danger">city should have characters only</span>
+                    class="invalid-feedback text-danger">City should have characters only</span>
             </div>
             <div class="col-sm-3">
                 <label class="form-label" for="state">State: </label>
@@ -69,7 +77,7 @@
                 <span *ngIf="isSubmitted && userInfo.get('address.state')?.hasError('required')"
                     class="invalid-feedback text-danger">State Required</span>
                 <span *ngIf="isSubmitted && userInfo.get('address.state')?.hasError('pattern')"
-                    class="invalid-feedback text-danger">state should have characters only</span>
+                    class="invalid-feedback text-danger">State should have characters only</span>
             </div>
             <div class="col-sm-3">
                 <label class="form-label" for="zipCode">Zip Code:</label>
@@ -89,7 +97,7 @@
             <div>
                 <label class="form-label" for="language">Select Known Languages:</label>
                 <select class="form-select" name="language" formControlName="language">
-                    <option value="telugu">Telugu</option>
+                    <option selected value="telugu">Telugu</option>
                     <option value="english">English</option>
                     <option value="hindi">Hindi</option>
                 </select>
@@ -113,7 +121,10 @@
                 </div>
                 <div *ngIf="userInfo.get('preferences.contactMethod')?.value==='phno'">
                     <label class="form-label" for="phno">Phone Number:</label>
-                    <input class="form-control" type="text" formControlName="phno">
+                    <input class="form-control" type="text" formControlName="phno"
+                        [ngClass]="{'is-invalid': isSubmitted && userInfo.get('preferences.email')?.hasError('pattern') }">
+                    <span *ngIf="isSubmitted && userInfo.get('preferences.phno')?.hasError('pattern')"
+                        class="invalid-feedback text-danger">Enter Valid Phone Number</span>
                 </div>
             </div>
         </div>
@@ -125,13 +136,10 @@
         </div>
         <p class="text-success mt-3" *ngIf="isSuccess">Submitted Successfully</p>
         <div class="text-center mt-4">
-            <input class="btn btn-orange w-25 me-2" *ngIf="!isEditable" type="submit" value="submit">
+            <input class="btn btn-orange w-25 me-2" *ngIf="!isEditable" type="submit" value="Submit">
             <input class="btn btn-orange w-25 me-2" *ngIf="isEditable" type="submit" value="Update">
         </div>
 
     </form>
-    <!-- <div *ngFor="let p of personDetails">
-    <p>{{p.fullName}}</p>
-</div> -->
 
 </div>

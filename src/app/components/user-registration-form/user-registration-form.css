@@ -1,6 +1,19 @@
 .btn-orange{
     background-color: rgb(246 119 54 / 98%);;
 }
+.form-container{
+    gap:60px;
+}
+.form-container button{
+    padding: 12px;
+    border-radius: 12px;
+    background-color: orange;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 0px;
+}
 /* .container {
     height: 100%;
     margin: 0;

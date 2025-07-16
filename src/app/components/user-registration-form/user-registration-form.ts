@@ -3,17 +3,16 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IPersonModel } from '../../interfaces/person-model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { image } from 'ionicons/icons';
 import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-user-registration-form',
   imports: [FormsModule, ReactiveFormsModule, NgIf, CommonModule],
   templateUrl: './user-registration-form.html',
-  styleUrl: './user-registration-form.css'
+  styleUrl: './user-registration-form.css',
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class UserRegistrationForm {
-  // [x: string]: any;
   personDetails: IPersonModel[] = [];
   isSubmitted: boolean = false;
   isSuccess: boolean = false;
@@ -49,7 +48,6 @@ export class UserRegistrationForm {
           }, image: user.image
         })
       }
-      // console.log(user)
     }
   }
 
@@ -59,7 +57,7 @@ export class UserRegistrationForm {
     fullName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
     dob: new FormControl('', Validators.required),
     age: new FormControl('', [Validators.required]),
-    profession: new FormControl(),
+    profession: new FormControl('',[Validators.required]),
     address: new FormGroup({
       street: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       city: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
@@ -71,7 +69,7 @@ export class UserRegistrationForm {
       language: new FormControl(),
       contactMethod: new FormControl('email'),
       email: new FormControl('', [Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
-      phno: new FormControl()
+      phno: new FormControl('',[Validators.pattern('^[6-9]\d{9}$')])
     }),
     image: new FormControl()
 
@@ -89,9 +87,6 @@ export class UserRegistrationForm {
       console.log(base64);
     };
     reader.readAsDataURL(file);
-    // const url = URL.createObjectURL(file);
-    // this.selectedFile=file.name
-    // this.userInfo.get('image')?.setValue(image) 
   }
 
   registerUser() {
@@ -99,7 +94,6 @@ export class UserRegistrationForm {
     if (this.userInfo.valid) {
       if (this.isEditable) {
         const index = this.personDetails.findIndex(u => u.id === this.editId);
-        // console.log(this.userInfo)
         if (index !== -1) {
           this.personDetails[index] = {
             id: this.editId,
@@ -149,17 +143,12 @@ export class UserRegistrationForm {
       }
       
       this.userService.saveUser(this.personDetails);
-      //console.log(localStorage.getItem('persons'))
       this.route.navigate(['/viewUsers']);
       this.userInfo.reset();
-      // // this.isSubmitted=false;
-      // this.isSuccess=true;
-      // setTimeout(()=>{
-      //   this.isSuccess=false
-      // },3000)
+      
       return;
 
     }
-    //console.log(this.userInfo.get('fullName')?.hasError('required'));
   }
+  
 }

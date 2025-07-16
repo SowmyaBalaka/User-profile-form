@@ -1,6 +1,6 @@
 <div class="sort-div">
     <label for="">Filter User : </label>
-    <select class="dropdown" name="" id="" (change)="onFilter($event)">
+    <select #profession class="dropdown" name="" id="" (change)="onFilter(profession.value)">
         <option value="">select Profession</option>
         <option value="doctor">Doctor</option>
         <option value="engineer">Engineer</option>

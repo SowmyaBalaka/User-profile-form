@@ -9,8 +9,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SortUser {
   @Output() sort = new EventEmitter<string>();
 
-  onSort(event:Event){
-    const sortValue = (event.target as HTMLSelectElement).value;
+  onSort(value:string){
+    const sortValue = value;
     this.sort.emit(sortValue);
   }
 }

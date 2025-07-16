@@ -64,7 +64,7 @@ h2 a {
   font-weight: bold;
 }
 
-.hamburger {
+/* .hamburger {
   width: 25px;
   height: 25px;
 }
@@ -76,7 +76,6 @@ h2 a {
   display: none;
   position: absolute;
   top: 50px;
-  /* adjust as needed */
   left: 0;
   width: 10%;
   background-color: rgba(255, 166, 0, 0.979);
@@ -96,10 +95,10 @@ h2 a {
   background-color: rgba(255, 166, 0, 0.979);
 }
 
-/* Show hamburger menu when toggled */
+
 .hamburger-menu.open {
   display: flex;
-}
+} */
 
 .container-body {
   margin-top: 9vh;
@@ -119,4 +118,12 @@ h2 a {
   nav h2 {
     font-size: 15px;
   }
+}
+.back-button{
+  color:orange;
+  background-color: white;
+  font-weight: 400;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
 }

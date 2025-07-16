@@ -2,14 +2,17 @@
   <div class="main-container">
     <div class="nav-bar">
       <nav>
-        <ion-icon name="menu-outline" class="hamburger" (click)="toggleMenu()" aria-label="toggleMenu"></ion-icon>
+        <!-- <ion-icon name="menu-outline" class="hamburger" (click)="toggleMenu()" aria-label="toggleMenu"></ion-icon> -->
+         <div >
+        <button *ngIf='showBackButton' (click)="goBack()" class="d-flex align-items-center justify-content-between back-button"><ion-icon name="arrow-back-outline"></ion-icon>Back</button>
+    </div>
         <h2><a routerLink="/viewUsers">User Registration Details</a></h2>
         <ul class="nav-list">
           <li><a routerLink="/registerUser">Register User</a></li>
         </ul>
-        <ul class="hamburger-menu" [class.open]="menuOpen">
+        <!-- <ul class="hamburger-menu" [class.open]="menuOpen">
           <li><a routerLink="/viewUsers">View Users </a></li>
-        </ul>
+        </ul> -->
       </nav>
     </div>
     <div class="container-body">
